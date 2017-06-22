@@ -6,6 +6,9 @@
 			<trans-unit id="downloadLink">
 				<source>Link</source>
 			</trans-unit>
+			<trans-unit id="download">
+				<source>Download</source>
+			</trans-unit>
 			<trans-unit id="file">
 				<source>File</source>
 			</trans-unit>

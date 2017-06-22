@@ -24,7 +24,7 @@ plugin.tx_powermailpdf {
 		sourceFile = {$plugin.tx_powermailpdf.settings.sourceFile}
 		fieldMap{
 			#pdfField = PowermailField
-			firstname = name
+			#firstname = name
 			#lastname = e_mail
 			#name = name
 			#address = nachname
