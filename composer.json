@@ -1,0 +1,25 @@
+{
+    "name": "undkonsorten/powermailpdf",
+    "type": "typo3-cms-extension",
+    "description": "Powermail PDF Form",
+    "homepage": "https://www.undkonsorten.com",
+    "authors": [
+		{
+			"name": "Eike Starkmann",
+			"email": "starkmann@undkonsorten.com",
+			"homepage": "http://undkonsorten.com",
+			"role": "Developer"
+		}
+    ],
+    "license": ["GPL-2.0+"],
+    "keywords": ["pdf", "TYPO3", "powermail"],
+    "version": "0.4.3",
+    "require": {
+        "typo3/cms": ">=6.2"
+    },
+    "autoload": {
+		"psr-4": {
+		 "Undkonsorten\\Powermailpdf\\": "Classes"
+		}
+  }
+}

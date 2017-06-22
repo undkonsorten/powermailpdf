@@ -1,0 +1,59 @@
+plugin.tx_powermailpdf {
+	view {
+		templateRootPath = {$plugin.tx_powermailpdf.view.templateRootPath}
+		partialRootPath = {$plugin.tx_powermailpdf.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_powermailpdf.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_powermailpdf.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+	settings {
+		filelink {
+			jumpurl = 1
+			jumpurl.secure = 1
+			jumpurl.secure.mimeTypes = pdf=application/pdf
+			icon = 1
+			icon_link = 1
+		}
+		enablePowermailPdf = {$plugin.tx_powermailpdf.settings.enablePowermailPdf}
+		fillPdf = {$plugin.tx_powermailpdf.settings.fillPdf}
+		sourceFile = {$plugin.tx_powermailpdf.settings.sourceFile}
+		fieldMap{
+			#pdfField = PowermailField
+			firstname = name
+			#lastname = e_mail
+			#name = name
+			#address = nachname
+			#city = email
+			#phone = email
+		}
+		showDownloadLink = {$plugin.tx_powermailpdf.settings.showDownloadLink}
+		email{
+			attachFile = {$plugin.tx_powermailpdf.settings.email.attachFile}
+		}
+	}
+}
+
+plugin.tx_powermailpdf._CSS_DEFAULT_STYLE (
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-t3uk-powermailpdf table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-t3uk-powermailpdf table th {
+		font-weight:bold;
+	}
+
+	.tx-t3uk-powermailpdf table td {
+		vertical-align:top;
+	}
+)

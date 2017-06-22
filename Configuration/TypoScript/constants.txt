@@ -1,0 +1,16 @@
+plugin.tx_powermailpdf {
+	settings{
+		# cat=plugin.tx_powermailpdf/enablePowermailPdf; type=boolean; label=Enable Powermail PDF
+		enablePowermailPdf = 0
+		# cat=plugin.tx_powermailpdf/sourceFile; type=string; label=The path to the pdf to be used of filled out
+		sourceFile = 
+		# cat=plugin.tx_powermailpdf/showDownload; type=boolean; label=Show download link in submit page
+		showDownloadLink = 1
+		# cat=plugin.tx_powermailpdf/fillPdf; type=boolean; label=Fill the pdf?
+		fillPdf = 1
+		email{
+			# cat=plugin.tx_powermailpdf/attachFile; type=boolean; label=Attach PDF to email
+			attachFile = 1
+		}
+	}
+}
