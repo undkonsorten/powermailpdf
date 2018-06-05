@@ -15,7 +15,8 @@
     "keywords": ["pdf", "TYPO3", "powermail"],
     "version": "0.4.3",
     "require": {
-        "typo3/cms": "^8.7"
+        "typo3/cms": "^8.7",
+        "tmw/fpdm": "^2.9"
     },
     "autoload": {
 		"psr-4": {
