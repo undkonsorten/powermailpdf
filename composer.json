@@ -15,7 +15,7 @@
     "keywords": ["pdf", "TYPO3", "powermail"],
     "version": "0.4.3",
     "require": {
-        "typo3/cms": "^8.7",
+        "typo3/cms": "^8.7|^9",
         "tmw/fpdm": "^2.9",
 		"in2code/powermail": "^5|^6"
     },
