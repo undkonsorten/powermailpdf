@@ -81,7 +81,7 @@ class Pdf extends \In2code\Powermail\Controller\FormController {
 	 * @param \In2code\Powermail\Domain\Model\Mail $mail
 	 * @param \string $hash
 	 */
-	public function createAction(\In2code\Powermail\Domain\Model\Mail $mail, $hash = NULL){
+	public function createAction(\In2code\Powermail\Domain\Model\Mail $mail, string $hash = NULL){
 		$settings = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_powermailpdf.']['settings.'];
 		$powermailSettings = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_powermail.']['settings.'];
 		$filePath = $settings['sourceFile'];
