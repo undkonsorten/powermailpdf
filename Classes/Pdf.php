@@ -110,12 +110,13 @@ class Pdf extends \In2code\Powermail\Controller\FormController {
 				$label= LocalizationUtility::translate("download","powermailpdf");
 				$link=$this->render($powermailFilePath, $label);
 				//Adds a field for the download link at the thx site
-				/* @var $answer In2code\Powermail\Domain\Model\Answer */
+				/* @var $answer \In2code\Powermail\Domain\Model\Answer */
 				$answer = $this->objectManager->get('In2code\Powermail\Domain\Model\Answer');
-				/* @var $field In2code\Powermail\Domain\Model\Field */
+				/* @var $field \In2code\Powermail\Domain\Model\Field */
 				$field = $this->objectManager->get('In2code\Powermail\Domain\Model\Field');
 				$field->setTitle(LocalizationUtility::translate('downloadLink', 'powermailpdf'));
-				$field->setType('downloadLink');
+				$field->setMarker('downloadLink');
+				$field->setType('html');
 				$answer->setField($field);
 				$answer->setValue($link);
 				$mail->addAnswer($answer);
