@@ -38,6 +38,24 @@ plugin.tx_powermailpdf {
 	}
 }
 
+plugin.tx_powermail.settings.receiver.attachment = 1
+plugin.tx_powermail.settings.sender.attachment = 1
+
+plugin.tx_powermail.settings.setup.receiver {
+      addAttachment = TEXT
+      addAttachment {
+        #value = fileadmin/myfile.pdf
+        wrap = |
+      }
+}
+plugin.tx_powermail.settings.setup.sender {
+      addAttachment = TEXT
+      addAttachment {
+        #value = fileadmin/myfile.pdf
+        wrap = |
+      }
+}
+
 plugin.tx_powermailpdf._CSS_DEFAULT_STYLE (
 	input.f3-form-error {
 		background-color:#FF9F9F;
