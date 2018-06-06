@@ -16,7 +16,8 @@
     "version": "0.4.3",
     "require": {
         "typo3/cms": "^8.7",
-        "tmw/fpdm": "^2.9"
+        "tmw/fpdm": "^2.9",
+		"in2code/powermail": "^3|^4|^5|^6"
     },
     "autoload": {
 		"psr-4": {
