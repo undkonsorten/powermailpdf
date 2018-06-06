@@ -4,7 +4,9 @@ namespace Undkonsorten\Powermailpdf;
 
 
 use TYPO3\CMS\Core\Error\Exception;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 class Pdf extends \In2code\Powermail\Controller\FormController {
@@ -80,8 +82,9 @@ class Pdf extends \In2code\Powermail\Controller\FormController {
 	 *
 	 * @param \In2code\Powermail\Domain\Model\Mail $mail
 	 * @param \string $hash
+     * @param \In2code\Powermail\Controller\FormController
 	 */
-	public function createAction(\In2code\Powermail\Domain\Model\Mail $mail, string $hash = NULL){
+	public function createAction(\In2code\Powermail\Domain\Model\Mail $mail, string $hash = NULL,  $formController = null){
 		$settings = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_powermailpdf.']['settings.'];
 		$powermailSettings = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_powermail.']['settings.'];
 		$filePath = $settings['sourceFile'];
@@ -122,19 +125,25 @@ class Pdf extends \In2code\Powermail\Controller\FormController {
 				$mail->addAnswer($answer);
 			}
 
-			if($settings['email.']['attachFile']){
-				/* @var $answer In2code\Powermail\Domain\Model\Answer */
-				$answer = $this->objectManager->get('In2code\Powermail\Domain\Model\Answer');
-
-				/* @var $field In2code\Powermail\Domain\Model\Field */
-				$field = $this->objectManager->get('In2code\Powermail\Domain\Model\Field');
-
-				$field->setTitle(LocalizationUtility::translate('file', 'powermailpdf'));
-				$field->setType('file');
-
-				$answer->setField($field);
-				$answer->setValue(basename($powermailFilePath));
-				$mail->addAnswer($answer);
+            if($settings['email.']['attachFile']){
+                // powermail version > 3.22.0
+                if (VersionNumberUtility::convertVersionNumberToInteger(ExtensionManagementUtility::getExtensionVersion("powermail")) >= 3022000) {
+                    // set pdf filename for attachment via TypoScript
+                    if ($formController) {
+                        $formController->settings['receiver']['addAttachment']['value'] = $powermailFilePath;
+                        $formController->settings['sender']['addAttachment']['value'] = $powermailFilePath;
+                    }
+                } else {
+                    /* @var $answer \In2code\Powermail\Domain\Model\Answer */
+                    $answer = $this->objectManager->get('In2code\Powermail\Domain\Model\Answer');
+                    /* @var $field \In2code\Powermail\Domain\Model\Field */
+                    $field = $this->objectManager->get('In2code\Powermail\Domain\Model\Field');
+                    $field->setTitle(LocalizationUtility::translate('file', 'powermailpdf'));
+                    $field->setType('file');
+                    $answer->setField($field);
+                    $answer->setValue(basename($powermailFilePath));
+                    $mail->addAnswer($answer);
+                }
 
 			}
 		}
