@@ -24,6 +24,11 @@ class Pdf extends \In2code\Powermail\Controller\FormController {
 	 */
 	protected function generatePdf(\In2code\Powermail\Domain\Model\Mail $mail){
 
+		// Include \FPDM library from phar file, if not included already (e.g. composer installation)
+		if (!class_exists('\FPDM')) {
+			@include 'phar://' . ExtensionManagementUtility::extPath('powermailpdf') . 'Resources/Private/PHP/fpdm.phar/vendor/autoload.php';
+		}
+
 		//ToDo Map Fields from $field to array;
 		//Normal Fields
 		$fieldMap= $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_powermailpdf.']['settings.']['fieldMap.'];
