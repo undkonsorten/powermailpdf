@@ -21,7 +21,7 @@ $EM_CONF[$_EXTKEY] = array (
 	'uploadfolder' => true,
 	'createDirs' => '',
 	'clearCacheOnLoad' => 0,
-	'version' => '0.4.3',
+	'version' => '0.4.4',
     'autoload' =>
         array(
             'psr-4' => array('Undkonsorten\\Powermailpdf\\' => 'Classes')
@@ -30,10 +30,7 @@ $EM_CONF[$_EXTKEY] = array (
 	array (
 		'depends' => 
 		array (
-			'typo3' => '6.2.0-6.2.99',
-			'extbase' => '6.2.0-6.2.99',
-			'fluid' => '6.2.0-6.2.99',
-			'cms' => '',
+			'typo3' => '6.2.0-7.9.99',
 			'powermail' => '2.1.8-2.25.2 ',
 		),
 		'conflicts' => 
