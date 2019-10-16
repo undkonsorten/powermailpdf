@@ -11,7 +11,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 class Pdf extends \In2code\Powermail\Controller\FormController {
 
     public function addAttachment(\TYPO3\CMS\Core\Mail\MailMessage $message, \In2code\Powermail\Domain\Model\Mail $mail, $settings) {
-        //@TODO: Maybe better use this slot
+        // @TODO: Maybe better use this slot
     }
 
     /**
@@ -32,8 +32,8 @@ class Pdf extends \In2code\Powermail\Controller\FormController {
         //     @include 'phar://' . ExtensionManagementUtility::extPath('powermailpdf') . 'Resources/Private/PHP/fpdm.phar/vendor/autoload.php';
         // }
 
-        //ToDo Map Fields from $field to array;
-        //Normal Fields
+        // ToDo Map Fields from $field to array;
+        // Normal Fields
         $fieldMap = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_powermailpdf.']['settings.']['fieldMap.'];
         $powermailSettings = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_powermail.']['settings.'];
 
@@ -59,7 +59,7 @@ class Pdf extends \In2code\Powermail\Controller\FormController {
             $pdf->Load($fdfDataStrings, true); // second parameter: false if field values are in ISO-8859-1, true if UTF-8
             $pdf->Merge();
             $pdf->Output("F", GeneralUtility::getFileAbsFileName($pdfFilename));
-        }else{
+        } else {
             throw new Exception("No pdf file is set in Typoscript. Please set tx_powermailpdf.settings.sourceFile if you want to use the filling feature.",1417432239);
         }
 
@@ -72,10 +72,10 @@ class Pdf extends \In2code\Powermail\Controller\FormController {
      * @return string Rendered link
      */
     protected function render($uri, $label) {
-        //get filelinkconf from typoscript setup plugin.tx_productdownloads.settings.filelink
+        // get filelinkconf from typoscript setup plugin.tx_productdownloads.settings.filelink
         $filelinkconf = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_powermailpdf.']['settings.']['filelink.'];
 
-        //replace the link label with the param $label
+        // replace the link label with the param $label
         $filelinkconf['labelStdWrap.']['cObject'] = 'TEXT';
         $filelinkconf['labelStdWrap.']['cObject.']['value'] = $label;
 
@@ -105,7 +105,7 @@ class Pdf extends \In2code\Powermail\Controller\FormController {
             if($settings['fillPdf']) {
                 $powermailFilePath = $this->generatePdf($mail);
             }else{
-                //Copy our pdf to powermail when is does not exist or has changed
+                // Copy our pdf to powermail when is does not exist or has changed
                 if(!file_exists(GeneralUtility::getFileAbsFileName($powermailFilePath))
                     || (md5_file(GeneralUtility::getFileAbsFileName($powermailFilePath)) != md5_file(GeneralUtility::getFileAbsFileName($filePath)))) {
                     copy(GeneralUtility::getFileAbsFileName($filePath),GeneralUtility::getFileAbsFileName($powermailFilePath));
@@ -115,7 +115,7 @@ class Pdf extends \In2code\Powermail\Controller\FormController {
             if($settings['showDownloadLink']) {
                 $label= LocalizationUtility::translate("download", "powermailpdf");
                 $link=$this->render($powermailFilePath, $label);
-                //Adds a field for the download link at the thx site
+                // Adds a field for the download link at the thx site
                 /* @var $answer \In2code\Powermail\Domain\Model\Answer */
                 $answer = $this->objectManager->get('In2code\Powermail\Domain\Model\Answer');
                 /* @var $field \In2code\Powermail\Domain\Model\Field */
