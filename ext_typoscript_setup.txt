@@ -1,5 +1,5 @@
 config.tx_extbase {
-	objects {
-		In2code\Powermail\ViewHelpers\Misc\VariablesViewHelper.className = Undkonsorten\Powermailpdf\ViewHelpers\Misc\VariablesViewHelper
-	}
+    objects {
+        In2code\Powermail\ViewHelpers\Misc\VariablesViewHelper.className = Undkonsorten\Powermailpdf\ViewHelpers\Misc\VariablesViewHelper
+    }
 }
