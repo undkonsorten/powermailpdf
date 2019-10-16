@@ -11,7 +11,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 class Pdf extends \In2code\Powermail\Controller\FormController {
 
     public function addAttachment(\TYPO3\CMS\Core\Mail\MailMessage $message, \In2code\Powermail\Domain\Model\Mail $mail, $settings) {
-    //@TODO Maybe better use this slot
+        //@TODO: Maybe better use this slot
     }
 
     /**
@@ -22,10 +22,15 @@ class Pdf extends \In2code\Powermail\Controller\FormController {
      */
     protected function generatePdf(\In2code\Powermail\Domain\Model\Mail $mail) {
 
-        // Include \FPDM library from phar file, if not included already (e.g. composer installation)
-        if (!class_exists('\FPDM')) {
-            @include 'phar://' . ExtensionManagementUtility::extPath('powermailpdf') . 'Resources/Private/PHP/fpdm.phar/vendor/autoload.php';
+        // v2.9.2 from https://github.com/codeshell/fpdm
+        if(!class_exists('\FPDM')) {
+            require 'typo3conf/ext/powermailpdf/Classes/fpdm/fpdm.php';
         }
+
+        // Include \FPDM library from phar file, if not included already (e.g. composer installation)
+        // if (!class_exists('\FPDM')) {
+        //     @include 'phar://' . ExtensionManagementUtility::extPath('powermailpdf') . 'Resources/Private/PHP/fpdm.phar/vendor/autoload.php';
+        // }
 
         //ToDo Map Fields from $field to array;
         //Normal Fields
@@ -146,4 +151,3 @@ class Pdf extends \In2code\Powermail\Controller\FormController {
         }
     }
 }
-?>
