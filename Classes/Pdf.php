@@ -3,6 +3,7 @@ namespace Undkonsorten\Powermailpdf;
 
 
 
+use In2code\Powermail\Domain\Model\Mail;
 use TYPO3\CMS\Core\Error\Exception;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -89,7 +90,8 @@ class Pdf extends \In2code\Powermail\Controller\FormController {
 	 * @param \string $hash
      * @param \In2code\Powermail\Controller\FormController
 	 */
-	public function createAction(\In2code\Powermail\Domain\Model\Mail $mail, string $hash = NULL,  $formController = null){
+	public function createAction(Mail $mail, string $hash = '')
+	{
 		$settings = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_powermailpdf.']['settings.'];
 		$powermailSettings = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_powermail.']['settings.'];
 		$filePath = $settings['sourceFile'];
@@ -134,10 +136,8 @@ class Pdf extends \In2code\Powermail\Controller\FormController {
                 // powermail version > 3.22.0
                 if (VersionNumberUtility::convertVersionNumberToInteger(ExtensionManagementUtility::getExtensionVersion("powermail")) >= 3022000) {
                     // set pdf filename for attachment via TypoScript
-                    if ($formController) {
-                        $formController->settings['receiver']['addAttachment']['value'] = $powermailFilePath;
-                        $formController->settings['sender']['addAttachment']['value'] = $powermailFilePath;
-                    }
+                    $this->settings['receiver']['addAttachment']['value'] = $powermailFilePath;
+                    $this->settings['sender']['addAttachment']['value'] = $powermailFilePath;
                 } else {
                     /* @var $answer \In2code\Powermail\Domain\Model\Answer */
                     $answer = $this->objectManager->get('In2code\Powermail\Domain\Model\Answer');
