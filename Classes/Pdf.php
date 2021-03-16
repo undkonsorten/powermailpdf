@@ -8,11 +8,18 @@ use TYPO3\CMS\Core\Error\Exception;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\VersionNumberUtility;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
-class Pdf extends \In2code\Powermail\Controller\FormController {
-
-
+/**
+ * PDF handling. Implements a signal slot createActionBeforeRenderView for Powermail.
+ *
+ * @todo this class may not need to extend from ActionController. The property
+ *   $this->objectManager must be instantiated. Apart from that no controller
+ *   functionality is used.
+ */
+class Pdf extends ActionController {
 	public function addAttachment(\TYPO3\CMS\Core\Mail\MailMessage $message, \In2code\Powermail\Domain\Model\Mail $mail, $settings){
 	//@TODO Maybe better use this slot
 	}
@@ -85,12 +92,13 @@ class Pdf extends \In2code\Powermail\Controller\FormController {
 	}
 
 	/**
+	 * Signal slot createActionBeforeRenderView
 	 *
 	 * @param \In2code\Powermail\Domain\Model\Mail $mail
 	 * @param \string $hash
      * @param \In2code\Powermail\Controller\FormController
 	 */
-	public function createAction(Mail $mail, string $hash = '')
+	public function createActionBeforeRenderView(Mail $mail, string $hash = '', $formController = null): void
 	{
 		$settings = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_powermailpdf.']['settings.'];
 		$powermailSettings = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_powermail.']['settings.'];
@@ -136,9 +144,11 @@ class Pdf extends \In2code\Powermail\Controller\FormController {
                 // powermail version > 3.22.0
                 if (VersionNumberUtility::convertVersionNumberToInteger(ExtensionManagementUtility::getExtensionVersion("powermail")) >= 3022000) {
                     // set pdf filename for attachment via TypoScript
-                    $this->settings['receiver']['addAttachment']['value'] = $powermailFilePath;
-                    $this->settings['sender']['addAttachment']['value'] = $powermailFilePath;
-                } else {
+					if ($formController) {
+						$formController->settings['receiver']['addAttachment']['value'] = $powermailFilePath;
+						$formController->settings['sender']['addAttachment']['value'] = $powermailFilePath;
+					}
+				} else {
                     /* @var $answer \In2code\Powermail\Domain\Model\Answer */
                     $answer = $this->objectManager->get('In2code\Powermail\Domain\Model\Answer');
                     /* @var $field \In2code\Powermail\Domain\Model\Field */

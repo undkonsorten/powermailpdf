@@ -7,7 +7,7 @@ if (!defined('TYPO3_MODE')) {
 		'In2code\\Powermail\\Controller\\FormController',
 		'createActionBeforeRenderView',
 		\Undkonsorten\Powermailpdf\Pdf::class,
-		'createAction'
+		'createActionBeforeRenderView'
 );
 
 
