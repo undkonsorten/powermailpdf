@@ -73,7 +73,7 @@ Example:
          </f:if>
       </dd>
 
-The extension adds to new fields to powermail form: **donwloadLink** and **file**. If you don't want to have them on thethx site or in the email you need
+The extension adds to new fields to powermail form: **downloadLink** and **file**. If you don't want to have them on the thx site or in the email you need
 so filter them in the Web.html and Mail.html template of powermail.
 
 Can look like this:
