@@ -5,5 +5,5 @@ if (!defined('TYPO3_MODE')) {
 
 
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Powermail PDF Form');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('powermailpdf', 'Configuration/TypoScript', 'Powermail PDF Form');
 
