@@ -12,13 +12,11 @@ plugin.tx_powermailpdf {
 		# rewrittenPropertyMapper = 1
 	}
 	settings {
-		filelink {
-			jumpurl = 1
-			jumpurl.secure = 1
-			jumpurl.secure.mimeTypes = pdf=application/pdf
-			icon = 1
-			icon_link = 1
-		}
+	    target{
+            pdf = {$plugin.tx_powermailpdf.settings.target.pdf}
+    	}
+    	template = {$plugin.tx_powermailpdf.settings.template}
+
 		enablePowermailPdf = {$plugin.tx_powermailpdf.settings.enablePowermailPdf}
 		fillPdf = {$plugin.tx_powermailpdf.settings.fillPdf}
 		sourceFile = {$plugin.tx_powermailpdf.settings.sourceFile}

@@ -1,9 +1,15 @@
 plugin.tx_powermailpdf {
 	settings{
+	    target{
+            # cat=plugin.tx_powermailpdf/settings; type=string; label=Target pdf:Format StoragePid:Folder
+            pdf = 1:powermailpdf
+        }
+        # cat=plugin.tx_powermailpdf/template; type=input; label=Template
+        template = EXT:powermailpdf/Resources/Private/Template/Link.html
 		# cat=plugin.tx_powermailpdf/enablePowermailPdf; type=boolean; label=Enable Powermail PDF
 		enablePowermailPdf = 0
 		# cat=plugin.tx_powermailpdf/sourceFile; type=string; label=The path to the pdf to be used of filled out
-		sourceFile = 
+		sourceFile =
 		# cat=plugin.tx_powermailpdf/showDownload; type=boolean; label=Show download link in submit page
 		showDownloadLink = 1
 		# cat=plugin.tx_powermailpdf/fillPdf; type=boolean; label=Fill the pdf?
