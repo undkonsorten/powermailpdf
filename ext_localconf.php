@@ -11,3 +11,6 @@ if (!defined('TYPO3_MODE')) {
 );
 
 
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\In2code\Powermail\ViewHelpers\Misc\VariablesViewHelper::class] = [
+    'className' => \Undkonsorten\Powermailpdf\ViewHelpers\Misc\VariablesViewHelper::class
+];
