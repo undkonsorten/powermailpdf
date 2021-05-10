@@ -1,24 +1,12 @@
+.. include:: ../Includes.txt
 
+.. _for-editors:
 
-.. ==================================================
-.. FOR YOUR INFORMATION
-.. --------------------------------------------------
-.. -*- coding: utf-8 -*- with BOM.
+===========
+For Editors
+===========
 
-.. ==================================================
-.. DEFINE SOME TEXTROLES
-.. --------------------------------------------------
-.. role::   underline
-.. role::   typoscript(code)
-.. role::   ts(typoscript)
-   :class:  typoscript
-.. role::   php(code)
-
-
-Administration
---------------
-
-!!! Attention in powermail version >3 you don't have to do that anymore.
+!! Attention in powermail version >3 you don't have to do that anymore.
 
 You can just add {downloadLink} to your answer page and you are fine.
 

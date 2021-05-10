@@ -1,29 +1,23 @@
-﻿
+.. include:: ../Includes.txt
 
-.. ==================================================
-.. FOR YOUR INFORMATION
-.. --------------------------------------------------
-.. -*- coding: utf-8 -*- with BOM.
+.. _introduction:
 
-.. ==================================================
-.. DEFINE SOME TEXTROLES
-.. --------------------------------------------------
-.. role::   underline
-.. role::   typoscript(code)
-.. role::   ts(typoscript)
-   :class:  typoscript
-.. role::   php(code)
+What does it do?
+================
+
+When a user fills a powermail form he will get a download link for a
+pdf file which contains the values he just entered. Also the pdf
+can be attached to an email and send to the user.
 
 
-Introduction
-------------
+.. _screenshots:
+
+Screenshots
+===========
 
 
-.. toctree::
-   :maxdepth: 5
-   :titlesonly:
-   :glob:
-
-   WhatDoesItDo/Index
-   Screenshots/Index
+.. figure:: ../Images/thx.png
+   :class: with-shadow
+   :alt: Powermail site
+   :width: 300px
 

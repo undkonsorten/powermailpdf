@@ -1,22 +1,10 @@
-﻿
+.. include:: ../Includes.txt
 
-.. ==================================================
-.. FOR YOUR INFORMATION
-.. --------------------------------------------------
-.. -*- coding: utf-8 -*- with BOM.
+.. _known-problems:
 
-.. ==================================================
-.. DEFINE SOME TEXTROLES
-.. --------------------------------------------------
-.. role::   underline
-.. role::   typoscript(code)
-.. role::   ts(typoscript)
-   :class:  typoscript
-.. role::   php(code)
-
-
-Known problems
---------------
+==============
+Known Problems
+==============
 
 Can only fill checkboxes in pdf file when pdftk is installed
 
@@ -29,5 +17,3 @@ Then try again with modele2.pdf.
 
 The pdf links generated in mail may not work properly. This feature is
 still buggy.
-
-
