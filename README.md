@@ -1,34 +1,66 @@
-Extension Manual
-=================
+# TYPO3 extension: PowermailPdf
 
-Description:
------------
-This extension adds faetures to the [powermail](https://github.com/einpraegsam/powermail) extension.
+## Description
 
-When a user fills a powermail form he will get a download link for a pdf file which contains the values he just entered. 
-Also the pdf can be attached to an email and send to the user.
+The ** TYPO3 extension PowermailPdf** converts form data into a PDF document. After submitting the form, the PDF can be downloaded or attached to and email. 
+
+The TYPO3 extension **PowermailPdf** extends the [TYPO3 extension Powermail](https://github.com/einpraegsam/powermail).
 
 
+![inline](Documentation/Images/TYPO3-Powermail2Pdf.png)
 
-Features:
------------
+## Features
+
+Add form data into a marker bases pdf template file and
 1. Add a download link to the (filled) pdf or given file.
 2. Attaches the file
 
-![inline](Documentation/Images/manual_html_m77f4e49b.png)
+## Screenshot
+
+![Screenshot TYP03-Extension: PowermailPdf download PDF with form data](Documentation/Images/thx.png)
+
+## Requirements
+
+* typo3/cms-core: ^10.4
+* in2code/powermail: ^8
+* tmw/fpdm: ^2.9
+
+## Documentation
+
+A more detailed [Documentation for PowermailPdf][1] can be found on the TYPO3 Documentation Server.
+
+More information on the technical background can be found on the [blog post][2] (in German)
 
 
+## Installation
 
-Installation:
------------
-1. Install the extension.
+1. Install the extension via [Composer][3]
+2. Enable the extension in the TYPO3 extension manager
+3. Add the static TypoScript
+4. Enable the pdf creation for powermail by adding to your TypoScript constants:
+   ```plugin.tx_powermailpdf.settings.enablePowermailPdf = 1```
 
-2. To enable the extension you have to set plugin.tx_powermailpdf.settings.enablePowermailPdf = 1. 
-You can add this to the TS of a page where the powermail formular is located.
-This is important if you have more powermail forms but just one needs the pdf filling feature.
+**Important:** If you have multiple powermail form, but only one form should create a PDF – Add this constant only on the page with the powermail form plugin.
 
-[Detailed Documentation](https://docs.typo3.org/typo3cms/extensions/powermailpdf/Index.html)
+---
 
-[Blog Post (German)](http://blog.undkonsorten.com/eigene-extension-vorgestellt-powermailpdf) 
+## Release Management
+
+PowermailPdf uses [**semantic versioning**][2].
 
 
+## Credits
+
+The extension is created and maintained by [undkonsorten - Die Berliner Internetagentur][10] our developer [Eike Starkmann][9].
+
+It was first published in 2013.
+
+
+[1]: https://docs.typo3.org/typo3cms/extensions/powermailpdf/
+[2]: http://blog.undkonsorten.com/eigene-extension-vorgestellt-powermailpdf
+
+[5]: https://semver.org/
+[6]: https://getcomposer.org/
+
+[9]: https://github.com/Starkmann/
+[10]: https://undkonsorten.com/
