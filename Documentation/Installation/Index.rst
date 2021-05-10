@@ -2,12 +2,18 @@
 
 .. _installation:
 
-============
 Installation
 ============
 
-Install the extension.
+- Install the extension via Composer
+- Enable the extension in the TYPO3 extension manager
+- Add the static TypoScript
+- Enable the pdf creation for powermail by adding to your TypoScript constants:
 
-To enable the extension you have to set **plugin.tx_powermailpdf.settings.enablePowermailPdf = 1**. You can add this to the TS of a page where the powermail formula is located.
-This is important if you have more powermail forms but just one needs
-the pdf filling feature.
+.. code-block:: typoscript
+
+	plugin.tx_powermailpdf.settings.enablePowermailPdf = 1
+
+.. Important::
+
+	**Important:** If you have multiple powermail form, but only one form should create a PDF – Add this constant only on the page with the powermail form plugin.

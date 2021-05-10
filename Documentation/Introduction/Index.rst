@@ -5,19 +5,20 @@
 What does it do?
 ================
 
-When a user fills a powermail form he will get a download link for a
-pdf file which contains the values he just entered. Also the pdf
-can be attached to an email and send to the user.
+The **TYPO3 extension PowermailPdf** converts form data into a PDF document. After submitting the form, the PDF can be downloaded or attached to and email.
 
+.. figure:: ../Images/TYPO3-Powermail2Pdf.png
+   :alt: Powermail form data to PDF
+
+The TYPO3 extension **PowermailPdf** extends the `TYPO3 extension Powermail
+<https://extensions.typo3.org/extension/powermail/>`_.
 
 .. _screenshots:
 
-Screenshots
+Screenshot
 ===========
-
 
 .. figure:: ../Images/thx.png
    :class: with-shadow
-   :alt: Powermail site
-   :width: 300px
+   :alt: Powermail Downlaod PDF File
 

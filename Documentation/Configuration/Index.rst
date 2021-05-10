@@ -7,9 +7,8 @@ Configuration
 =============
 
 
-All configuration are done in Typo Script, besides the Label
-“Download”. It can be found in
-Resources/Private/Language/locallang.xml
+All configuration is done via TypoScript, besides the Label
+“Download”. It can be found in *Resources/Private/Language/locallang.xml*
 
 .. _configuration-typoscript:
 
