@@ -32,8 +32,6 @@ EXT: Powermail PDF
    `CC BY-NC-SA 4.0 <https://creativecommons.org/licenses/by-nc-sa/4.0/>`__ (Creative Commons)
    license
 
-{extension.description}
-
 **TYPO3**
 
 The content of this document is related to TYPO3 CMS,

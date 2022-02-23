@@ -5,7 +5,7 @@
 Installation
 ============
 
-- Install the extension via Composer
+- Install the extension via Composer (only)
 - Enable the extension in the TYPO3 extension manager
 - Add the static TypoScript
 - Enable the pdf creation for powermail by adding to your TypoScript constants:

@@ -9,7 +9,9 @@ Known Problems
 
 2. If your template PDF is not compatible with this script, you can process it with pdftk this way:
 
-- pdftk modele.pdf output modele2.pdf
+.. code-block:: bash
+
+   pdftk modele.pdf output modele2.pdf
 
 Then try again with modele2.pdf.
 

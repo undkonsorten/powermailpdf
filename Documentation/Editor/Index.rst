@@ -6,8 +6,6 @@
 For Editors
 ===========
 
-!! Attention in powermail version >3 you don't have to do that anymore.
-
 You can just add {downloadLink} to your answer page and you are fine.
 
 If you want the download link to be shown on the thx site after the user submitted his data you need to edit the Web.html template (Resources/Private/PowermailAll/Web.html) of powermail.
