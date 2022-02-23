@@ -21,7 +21,7 @@ $EM_CONF[$_EXTKEY] = array (
 	'uploadfolder' => true,
 	'createDirs' => '',
 	'clearCacheOnLoad' => 0,
-	'version' => '3.0.1',
+	'version' => '3.0.2',
     'autoload' =>
         array(
             'psr-4' => array('Undkonsorten\\Powermailpdf\\' => 'Classes')
