@@ -18,6 +18,11 @@
         "tmw/fpdm": "^2.9",
 		"in2code/powermail": "^8"
     },
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "powermailpdf"
+		}
+	},
     "autoload": {
 		"psr-4": {
 		 "Undkonsorten\\Powermailpdf\\": "Classes"
