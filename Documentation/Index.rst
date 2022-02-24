@@ -25,7 +25,7 @@ EXT: Powermail PDF
    starkmann@undkonsorten.com
 
 :Company:
-   `undkonsorten - Die Berliner Internet-Agentur <https://creativecommons.org/licenses/by-nc-sa/4.0/>`_
+   `undkonsorten - Die Berliner Internet-Agentur <https://www.undkonsorten.com/>`_
 
 :License:
    This extension documentation is published under the
@@ -54,7 +54,7 @@ a GNU/GPL CMS/Framework available from `typo3.org <https://typo3.org/>`_ .
 This documentation is community documentation for the **TYPO3 extension powermailpdf**. It is maintained as part of this third party extension.
 
 If you find an error or something is missing, please:
-`Report a Problem <https://github.com/TYPO3-Documentation/TYPO3CMS-Example-ExtensionManual/issues/new>`__
+`Report a Problem <https://github.com/undkonsorten/powermailpdf/issues>`_
 
 **Extension Manual**
 
