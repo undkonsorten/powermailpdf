@@ -14,7 +14,7 @@
     "license": ["GPL-2.0+"],
     "keywords": ["pdf", "TYPO3", "powermail"],
     "require": {
-        "typo3/cms": "^8.7|^9",
+        "typo3/cms-core": "^8.7|^9",
         "tmw/fpdm": "^2.9",
 		"in2code/powermail": "^5|^6"
     },
