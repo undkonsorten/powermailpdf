@@ -23,6 +23,13 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
  */
 class Pdf
 {
+    /** @var ResourceFactory */
+    protected $resourceFactory;
+
+    public function __construct(ResourceFactory $resourceFactory)
+    {
+        $this->resourceFactory = $resourceFactory;
+    }
 
     /**
      * @param Mail $mail
@@ -35,7 +42,7 @@ class Pdf
         $settings = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_powermailpdf.']['settings.'];
 
         /** @var Folder $folder */
-        $folder = ResourceFactory::getInstance()->getFolderObjectFromCombinedIdentifier($settings['target.']['pdf']);
+        $folder = $this->resourceFactory->getFolderObjectFromCombinedIdentifier($settings['target.']['pdf']);
 
         // Include \FPDM library from phar file, if not included already (e.g. composer installation)
         if (!class_exists('\FPDM')) {

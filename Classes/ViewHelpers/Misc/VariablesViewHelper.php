@@ -8,6 +8,7 @@ use In2code\Powermail\Domain\Service\ConfigurationService;
 use In2code\Powermail\Utility\ArrayUtility;
 use In2code\Powermail\Utility\ObjectUtility;
 use In2code\Powermail\Utility\TemplateUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException;
 use TYPO3\CMS\Extbase\Mvc\Exception\InvalidExtensionNameException;
 use TYPO3\CMS\Extbase\Object\Exception;
@@ -39,6 +40,22 @@ class VariablesViewHelper extends AbstractViewHelper
      */
     protected $settings = [];
 
+    /** @var ConfigurationService */
+    protected $configurationService;
+
+    /** @var MailRepository */
+    protected $mailRepository;
+
+    /** @var StandaloneView */
+    protected $standaloneView;
+
+    public function __construct()
+    {
+        $this->configurationService = GeneralUtility::makeInstance(ConfigurationService::class);
+        $this->mailRepository = GeneralUtility::makeInstance(MailRepository::class);
+        $this->standaloneView = GeneralUtility::makeInstance(StandaloneView::class);
+    }
+
     /**
      * @return void
      */
@@ -65,24 +82,22 @@ class VariablesViewHelper extends AbstractViewHelper
         $mail = $this->arguments['mail'];
         $type = $this->arguments['type'];
         $function = $this->arguments['function'];
-        $mailRepository = ObjectUtility::getObjectManager()->get(MailRepository::class);
-        $parseObject = ObjectUtility::getObjectManager()->get(StandaloneView::class);
-        $parseObject->setTemplateSource($this->removePowermailAllParagraphTagWrap($this->renderChildren()));
+        $this->standaloneView->setTemplateSource($this->removePowermailAllParagraphTagWrap($this->renderChildren()));
 
-        $variables = $mailRepository->getVariablesWithMarkersFromMail($mail);
+        $variables = $this->mailRepository->getVariablesWithMarkersFromMail($mail);
         foreach ($variables as $key => $value){
             if($key != 'downloadLink'){
                 $variables[$key] = html_entity_decode($value);
             }
         }
-        $parseObject->assignMultiple(
+        $this->standaloneView->assignMultiple(
             $variables
         );
-        $parseObject->assignMultiple(
-            ArrayUtility::htmlspecialcharsOnArray($mailRepository->getLabelsWithMarkersFromMail($mail))
+        $this->standaloneView->assignMultiple(
+            ArrayUtility::htmlspecialcharsOnArray($this->mailRepository->getLabelsWithMarkersFromMail($mail))
         );
-        $parseObject->assign('powermail_all', TemplateUtility::powermailAll($mail, $type, $this->settings, $function));
-        return html_entity_decode($parseObject->render(), ENT_QUOTES, 'UTF-8');
+        $this->standaloneView->assign('powermail_all', TemplateUtility::powermailAll($mail, $type, $this->settings, $function));
+        return html_entity_decode($this->standaloneView->render(), ENT_QUOTES, 'UTF-8');
     }
 
     /**
@@ -119,7 +134,6 @@ class VariablesViewHelper extends AbstractViewHelper
      */
     public function initialize()
     {
-        $configurationService = ObjectUtility::getObjectManager()->get(ConfigurationService::class);
-        $this->settings = $configurationService->getTypoScriptSettings();
+        $this->settings = $this->configurationService->getTypoScriptSettings();
     }
 }
