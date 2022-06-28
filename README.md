@@ -2,7 +2,7 @@
 
 ## Description
 
-The ** TYPO3 extension PowermailPdf** converts form data into a PDF document. After submitting the form, the PDF can be downloaded or attached to and email. 
+The ** TYPO3 extension PowermailPdf** converts form data into a PDF document. After submitting the form, the PDF can be downloaded or attached to and email.
 
 The TYPO3 extension **PowermailPdf** extends the [TYPO3 extension Powermail](https://github.com/einpraegsam/powermail).
 
@@ -56,7 +56,7 @@ The extension is created and maintained by [undkonsorten - Die Berliner Internet
 It was first published in 2013.
 
 
-[1]: https://docs.typo3.org/typo3cms/extensions/powermailpdf/
+[1]: https://docs.typo3.org/p/undkonsorten/powermailpdf/main/en-us/
 [2]: http://blog.undkonsorten.com/eigene-extension-vorgestellt-powermailpdf
 
 [5]: https://semver.org/
