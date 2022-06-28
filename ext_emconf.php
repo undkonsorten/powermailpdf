@@ -32,7 +32,7 @@ $EM_CONF[$_EXTKEY] = array (
 		array (
             'typo3' => '10.4.0-11.99.99',
             'php' => '7.2.0-8.99.99',
-			'powermail' => '8.0.0-19.99.99',
+			'powermail' => '8.0.0-10.99.99',
 		),
 		'conflicts' =>
 		array (
