@@ -14,7 +14,7 @@
 			<f:else>
 				<f:if condition="{0:answer.field.type} == {0:'downloadLink'}">
 					<f:then>
-						<f:format.html>{answer.value}</f:format.html>
+						<f:format.raw>{answer.value}</f:format.raw>
 					</f:then>
 					<f:else>
 						<f:format.nl2br><vh:misc.manipulateValueWithTypoScript answer="{answer}" type="{type}">{answer.value}</vh:misc.manipulateValueWithTypoScript></f:format.nl2br>
