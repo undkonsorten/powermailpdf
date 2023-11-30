@@ -87,7 +87,7 @@ class VariablesViewHelper extends AbstractViewHelper
         $variables = $this->mailRepository->getVariablesWithMarkersFromMail($mail);
         foreach ($variables as $key => $value){
             if($key != 'downloadLink'){
-                $variables[$key] = html_entity_decode($value);
+                $variables[$key] = html_entity_decode((string)$value);
             }
         }
         $this->standaloneView->assignMultiple(
