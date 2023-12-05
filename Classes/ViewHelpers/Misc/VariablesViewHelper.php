@@ -36,13 +36,13 @@ class VariablesViewHelper extends AbstractViewHelper
     protected array $settings = [];
 
     /** @var ConfigurationService */
-    protected mixed $configurationService;
+    protected object $configurationService;
 
     /** @var MailRepository */
-    protected mixed $mailRepository;
+    protected object $mailRepository;
 
     /** @var StandaloneView */
-    protected mixed $standaloneView;
+    protected object $standaloneView;
 
     public function __construct()
     {
