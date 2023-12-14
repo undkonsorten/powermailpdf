@@ -16,7 +16,7 @@
     "require": {
         "typo3/cms-core": "^12.4",
         "tmw/fpdm": "^2.9",
-		"in2code/powermail": "^11"
+		"in2code/powermail": "^11 || ^12"
     },
 	"extra": {
 		"typo3/cms": {
