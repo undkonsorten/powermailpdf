@@ -59,9 +59,6 @@ final class CreateActionBeforeRenderView
         }
 
         //Normal Fields
-        $fieldMap = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_powermailpdf.']['settings.']['fieldMap.'];
-
-        //Normal Fields
         $fieldMap = $settings['fieldMap.'];
 
         $answers = $mail->getAnswers();
@@ -69,17 +66,21 @@ final class CreateActionBeforeRenderView
         $fdfDataStrings = array();
         $pdfField_value = null;
         foreach ($fieldMap as $fieldID => $fieldConfig) {
-            foreach ($answers as $answer) {
-                $pdfField_name = explode('.', $fieldID)[0];
 
-                if (is_array($fieldConfig)) {
-                    $pdfField_type = $fieldConfig['type'];
-                    $pdfField_value = $fieldConfig['form_value'];
-                    $formField_name = $fieldConfig['form_name'];
-                } else {
-                    $pdfField_type = 'text';
-                    $formField_name = $fieldConfig;
-                }
+            if (is_array($fieldConfig)) {
+                $pdfField_type = $fieldConfig['type'];
+                $pdfField_value = $fieldConfig['form_value'];
+                $formField_name = $fieldConfig['form_name'];
+            } else {
+                $pdfField_type = 'text';
+                $formField_name = $fieldConfig;
+            }
+
+            $pdfField_name = explode('.', $fieldID)[0];
+
+            $fdfDataStrings[$pdfField_name] = 'k.A.';
+
+            foreach ($answers as $answer) {
 
                 if ($formField_name == $answer->getField()->getMarker()) {
                     if ($pdfField_type == 'text') {
@@ -226,9 +227,6 @@ final class CreateActionBeforeRenderView
 
     protected function encodeValue($value)
     {
-        if ($value == '') {
-            $value = 'k.A.';
-        }
         if (is_array($value)) {
             $value = implode(',', $value);
         }
