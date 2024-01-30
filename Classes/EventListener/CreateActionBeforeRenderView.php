@@ -93,7 +93,10 @@ final class CreateActionBeforeRenderView
                 } else {
                     continue;
                 }
-                $fdfDataStrings[$pdfField_name] = $pdfField_value;
+
+                if (!empty($pdfField_value)) {
+                    $fdfDataStrings[$pdfField_name] = $pdfField_value;
+                }
             }
         }
 
