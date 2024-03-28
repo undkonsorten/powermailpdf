@@ -18,7 +18,7 @@ $EM_CONF[$_EXTKEY] = array (
 	'author_email' => 'starkmann@undkonsorten.com',
 	'author_company' => 'undkonsorten Gbr',
 	'state' => 'beta',
-	'version' => '4.0.0',
+	'version' => '5.0.0',
     'autoload' =>
         array(
             'psr-4' => array('Undkonsorten\\Powermailpdf\\' => 'Classes')
