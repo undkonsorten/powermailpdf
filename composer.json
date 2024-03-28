@@ -21,6 +21,9 @@
 	"extra": {
 		"typo3/cms": {
 			"extension-key": "powermailpdf"
+		},
+		"branch-alias":{
+			"dev-main": "5.0.x-dev"
 		}
 	},
     "autoload": {
