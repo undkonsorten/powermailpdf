@@ -6,14 +6,9 @@ use In2code\Powermail\Domain\Model\Mail;
 use In2code\Powermail\Domain\Repository\MailRepository;
 use In2code\Powermail\Domain\Service\ConfigurationService;
 use In2code\Powermail\Utility\ArrayUtility;
-use In2code\Powermail\Utility\ObjectUtility;
 use In2code\Powermail\Utility\TemplateUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException;
-use TYPO3\CMS\Extbase\Mvc\Exception\InvalidExtensionNameException;
-use TYPO3\CMS\Extbase\Object\Exception;
-use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException;
-use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
@@ -38,16 +33,16 @@ class VariablesViewHelper extends AbstractViewHelper
      *
      * @var array
      */
-    protected $settings = [];
+    protected array $settings = [];
 
     /** @var ConfigurationService */
-    protected $configurationService;
+    protected object $configurationService;
 
     /** @var MailRepository */
-    protected $mailRepository;
+    protected object $mailRepository;
 
     /** @var StandaloneView */
-    protected $standaloneView;
+    protected object $standaloneView;
 
     public function __construct()
     {
@@ -71,11 +66,7 @@ class VariablesViewHelper extends AbstractViewHelper
      * Enable variables within variable {powermail_rte} - so string will be parsed again
      *
      * @return string
-     * @throws Exception
      * @throws InvalidConfigurationTypeException
-     * @throws InvalidExtensionNameException
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
      */
     public function render(): string
     {
@@ -87,7 +78,7 @@ class VariablesViewHelper extends AbstractViewHelper
         $variables = $this->mailRepository->getVariablesWithMarkersFromMail($mail);
         foreach ($variables as $key => $value){
             if($key != 'downloadLink'){
-                $variables[$key] = html_entity_decode($value);
+                $variables[$key] = html_entity_decode((string)$value);
             }
         }
         $this->standaloneView->assignMultiple(
@@ -130,7 +121,6 @@ class VariablesViewHelper extends AbstractViewHelper
      * Init to get TypoScript Configuration
      *
      * @return void
-     * @throws Exception
      */
     public function initialize()
     {
