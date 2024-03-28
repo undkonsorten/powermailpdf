@@ -48,7 +48,7 @@ final class CreateActionBeforeRenderView
     {
 
         $settings = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_powermailpdf.']['settings.'];
-        $this->encoding = $settings['encoding'];
+        $this->encoding = $settings['encoding']??'';
 
         /** @var Folder $folder */
         $folder = $this->resourceFactory->getFolderObjectFromCombinedIdentifier($settings['target.']['pdf']);
@@ -129,7 +129,7 @@ final class CreateActionBeforeRenderView
             $pdf->Merge();
             $pdf->Output("F", GeneralUtility::getFileAbsFileName($pdfTempFile));
 
-            if ($settings['flatten'] && $settings['flattenTool']) {
+            if (isset($settings['flatten']) && isset($settings['flattenTool'])) {
                 $pdfFlatTempFile = GeneralUtility::tempnam($pdfFilename, '.pdf');
                 $tempFile = GeneralUtility::tempnam($pdfFilename, '.pdf');
                 switch ($settings['flattenTool']) {
