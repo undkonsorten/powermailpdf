@@ -47,7 +47,7 @@ final class CreateActionBeforeRenderView
     protected function generatePdf(Mail $mail)
     {
 
-        $settings = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_powermailpdf.']['settings.'];
+        $settings = $GLOBALS['TYPO3_REQUEST']->getAttribute('frontend.typoscript')->getSetupArray()['plugin.']['tx_powermailpdf.']['settings.'];
         $this->encoding = $settings['encoding']??'';
 
         /** @var Folder $folder */
@@ -116,7 +116,7 @@ final class CreateActionBeforeRenderView
             }
         }
 
-        $pdfOriginal = GeneralUtility::getFileAbsFileName($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_powermailpdf.']['settings.']['sourceFile']);
+        $pdfOriginal = GeneralUtility::getFileAbsFileName($GLOBALS['TYPO3_REQUEST']->getAttribute('frontend.typoscript')->getSetupArray()['plugin.']['tx_powermailpdf.']['settings.']['sourceFile']);
 
         if (!empty($pdfOriginal)) {
             $pdfFlatTempFile = (string) null;
@@ -166,7 +166,7 @@ final class CreateActionBeforeRenderView
      */
     protected function render(File $file, $label)
     {
-        $settings = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_powermailpdf.']['settings.'];
+        $settings = $GLOBALS['TYPO3_REQUEST']->getAttribute('frontend.typoscript')->getSetupArray()['plugin.']['tx_powermailpdf.']['settings.'];
         $templatePath = GeneralUtility::getFileAbsFileName($settings['template']);
         $this->standaloneView->setFormat('html');
         $this->standaloneView->setTemplatePathAndFilename($templatePath);
@@ -186,7 +186,7 @@ final class CreateActionBeforeRenderView
      */
     public function __invoke(FormControllerCreateActionBeforeRenderViewEvent $event): void
     {
-        $settings = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_powermailpdf.']['settings.'];
+        $settings = $GLOBALS['TYPO3_REQUEST']->getAttribute('frontend.typoscript')->getSetupArray()['plugin.']['tx_powermailpdf.']['settings.'];
         $mail = $event->getMail();
         $formController = $event->getFormController();
 

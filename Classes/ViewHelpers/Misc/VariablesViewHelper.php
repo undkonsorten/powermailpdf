@@ -54,7 +54,7 @@ class VariablesViewHelper extends AbstractViewHelper
     /**
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('mail', Mail::class, 'Mail', true);
@@ -122,7 +122,7 @@ class VariablesViewHelper extends AbstractViewHelper
      *
      * @return void
      */
-    public function initialize()
+    public function initialize(): void
     {
         $this->settings = $this->configurationService->getTypoScriptSettings();
     }

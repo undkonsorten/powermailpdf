@@ -14,16 +14,16 @@
     "license": ["GPL-2.0+"],
     "keywords": ["pdf", "TYPO3", "powermail"],
     "require": {
-        "typo3/cms-core": "^12.4",
+        "typo3/cms-core": "^12.4 || 13.4",
         "tmw/fpdm": "^2.9",
-		"in2code/powermail": "^11 || ^12 || dev-eap"
+		"in2code/powermail": "^12 || ^13 || dev-eap"
     },
 	"extra": {
 		"typo3/cms": {
 			"extension-key": "powermailpdf"
 		},
 		"branch-alias":{
-			"dev-main": "5.0.x-dev"
+			"dev-main": "5.1.x-dev"
 		}
 	},
     "autoload": {
