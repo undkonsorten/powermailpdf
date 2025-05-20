@@ -64,54 +64,10 @@ final class CreateActionBeforeRenderView
         $answers = $mail->getAnswers();
 
         $fdfDataStrings = array();
-        $pdfField_value = null;
-        foreach ($fieldMap as $fieldID => $fieldConfig) {
-
-            if (is_array($fieldConfig)) {
-                $pdfField_type = $fieldConfig['type'];
-                $pdfField_value = $fieldConfig['form_value'];
-                $formField_name = $fieldConfig['form_name'];
-            } else {
-                $pdfField_type = 'text';
-                $formField_name = $fieldConfig;
-            }
-
-            $pdfField_name = explode('.', $fieldID)[0];
-
-            $fdfDataStrings[$pdfField_name] = 'k.A.';
-
+        foreach ($fieldMap as $key => $value) {
             foreach ($answers as $answer) {
-
-                if ($formField_name == $answer->getField()->getMarker()) {
-                    if ($pdfField_type == 'text') {
-                        $pdfField_value = $this->encodeValue($answer->getValue());
-                    } elseif ($pdfField_type == 'checkbox') {
-                        if ($answer->getValue() == $fieldConfig['form_value']) {
-                            $pdfField_value = $this->encodeValue($fieldConfig['pdf_value']);
-                        }
-                    }
-                } else {
-                    continue;
-                }
-
-                if (!empty($pdfField_value)) {
-                    $fdfDataStrings[$pdfField_name] = $pdfField_value;
-                }
-            }
-        }
-
-        // Variables
-        if (isset($settings['variables.'])) {
-            $variables = $settings['variables.'];
-
-            if (!empty($variables)) {
-                $typoScriptService = GeneralUtility::makeInstance(TypoScriptService::class);
-                $variables = $typoScriptService->convertTypoScriptArrayToPlainArray($variables);
-                $cObject = GeneralUtility::makeInstance(ContentObjectRenderer::class);
-                foreach ($variables as $key => $item) {
-                    $type = $item['_typoScriptNodeValue'];
-                    unset($item['_typoScriptNodeValue']);
-                    $fdfDataStrings[$key] = $cObject->cObjGetSingle($type, $item);
+                if ($value == $answer->getField()->getMarker()) {
+                    $fdfDataStrings[$key] = $answer->getValue();
                 }
             }
         }
@@ -225,18 +181,6 @@ final class CreateActionBeforeRenderView
                 $settings['sender']['addAttachment']['value'] = $powermailPdfFile->getForLocalProcessing(false);
                 $formController->setSettings($settings);
             }
-        }
-    }
-
-    protected function encodeValue($value)
-    {
-        if (is_array($value)) {
-            $value = implode(',', $value);
-        }
-        if ($this->encoding) {
-            return iconv('UTF-8', $this->encoding, $value);
-        } else {
-            return $value;
         }
     }
 }
