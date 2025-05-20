@@ -125,6 +125,7 @@ final class CreateActionBeforeRenderView
             $pdfTempFile = GeneralUtility::tempnam($pdfFilename, '.pdf');
 
             $pdf = new \FPDM($pdfOriginal);
+            $pdf->useCheckboxParser = true;
             $pdf->Load($fdfDataStrings, !$this->encoding); // second parameter: false if field values are in ISO-8859-1, true if UTF-8
             $pdf->Merge();
             $pdf->Output("F", GeneralUtility::getFileAbsFileName($pdfTempFile));
